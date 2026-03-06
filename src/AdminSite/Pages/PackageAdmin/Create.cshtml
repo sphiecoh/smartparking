@@ -1,0 +1,26 @@
+@* Create.cshtml *@
+@page
+@model AdminSite.Pages.Packages.CreateModel
+@{
+    ViewData["Title"] = "New Package";
+}
+
+<div class="breadcrumb">
+    <a href="/Packages">Packages</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">New Package</span>
+</div>
+
+<div class="form-card">
+    <form method="post">
+        <div class="field full">
+            <label asp-for="Input.Name">Package Name</label>
+            <input asp-for="Input.Name" placeholder="e.g. Starter, Professional, Enterprise" autofocus />
+            <span asp-validation-for="Input.Name" class="field-validation-error"></span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create Package</button>
+            <a href="/Packages" class="btn btn-ghost">Cancel</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+@page
+@model AdminSite.Pages.Packages.EditModel
+@{
+    ViewData["Title"] = "Edit Package";
+}
+
+<div class="breadcrumb">
+    <a href="/Packages">Packages</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Edit</span>
+</div>
+
+<div class="form-card">
+    <form method="post" asp-route-id="@Model.PackageId">
+        <div class="field full">
+            <label asp-for="Input.Name">Package Name</label>
+            <input asp-for="Input.Name" autofocus />
+            <span asp-validation-for="Input.Name" class="field-validation-error"></span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="/Packages" class="btn btn-ghost">Cancel</a>
+        </div>
+    </form>
+</div>
