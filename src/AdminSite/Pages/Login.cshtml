@@ -1,0 +1,47 @@
+@page
+@model AdminSite.Pages.LoginModel
+@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "Sign In";
+}
+
+<div class="login-wrap">
+    <div class="login-brand">
+        <span class="brand-icon">⬡</span>
+        <h1>Control Panel</h1>
+        <p>System Administration</p>
+    </div>
+
+    <div class="login-card">
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="login-error">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                @Model.ErrorMessage
+            </div>
+        }
+
+        <form method="post">
+            <div style="display:flex; flex-direction:column; gap:18px;">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input asp-for="Input.Username" id="username" type="text"
+                           placeholder="admin" autocomplete="username" autofocus />
+                    <span asp-validation-for="Input.Username" class="field-validation-error"></span>
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input asp-for="Input.Password" id="password" type="password"
+                           placeholder="••••••••" autocomplete="current-password" />
+                    <span asp-validation-for="Input.Password" class="field-validation-error"></span>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                    Sign In
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

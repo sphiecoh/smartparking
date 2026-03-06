@@ -1,0 +1,47 @@
+@page
+@model AdminSite.Pages.Tenants.EditModel
+@{
+    ViewData["Title"] = "Edit Tenant";
+}
+
+<div class="breadcrumb">
+    <a href="/Tenants">Tenants</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Edit</span>
+</div>
+
+<div class="form-card">
+    <form method="post" asp-route-id="@Model.TenantId">
+        <div class="form-grid">
+            <div class="field full">
+                <label asp-for="Input.Name">Organisation Name</label>
+                <input asp-for="Input.Name" autofocus />
+                <span asp-validation-for="Input.Name" class="field-validation-error"></span>
+            </div>
+
+            <div class="field full">
+                <label asp-for="Input.Url">Portal URL</label>
+                <input asp-for="Input.Url" type="url" />
+                <span asp-validation-for="Input.Url" class="field-validation-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.PackageId">Subscription Package</label>
+                <select asp-for="Input.PackageId" asp-items="Model.Packages"></select>
+            </div>
+
+            <div class="field" style="justify-content:flex-end;padding-bottom:4px">
+                <label>Status</label>
+                <div class="toggle-wrap">
+                    <input asp-for="Input.Active" type="checkbox" class="toggle" id="activeToggle" />
+                    <label class="toggle-label" for="activeToggle">Active</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="/Tenants" class="btn btn-ghost">Cancel</a>
+        </div>
+    </form>
+</div>

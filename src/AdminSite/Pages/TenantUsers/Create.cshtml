@@ -1,0 +1,67 @@
+@page
+@model AdminSite.Pages.TenantUsers.CreateModel
+@{
+    ViewData["Title"] = "New Admin User";
+}
+
+<div class="breadcrumb">
+    <a href="/TenantUsers">Admin Users</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">New User</span>
+</div>
+
+<div class="form-card">
+    <form method="post">
+        <div class="form-grid">
+
+            <div class="field">
+                <label asp-for="Input.FullName">Full Name</label>
+                <input asp-for="Input.FullName" placeholder="Jane Smith" autofocus />
+                <span asp-validation-for="Input.FullName" class="field-validation-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.Username">Username</label>
+                <input asp-for="Input.Username" placeholder="jane.smith" autocomplete="off" />
+                <span asp-validation-for="Input.Username" class="field-validation-error"></span>
+            </div>
+
+            <div class="field full">
+                <label asp-for="Input.Email">Email Address</label>
+                <input asp-for="Input.Email" type="email" placeholder="jane@acme.com" />
+                <span asp-validation-for="Input.Email" class="field-validation-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.TenantId">Tenant</label>
+                <select asp-for="Input.TenantId" asp-items="Model.Tenants"></select>
+                <span asp-validation-for="Input.TenantId" class="field-validation-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.RoleId">Role</label>
+                <select asp-for="Input.RoleId" asp-items="Model.Roles"></select>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.Password">Password</label>
+                <input asp-for="Input.Password" type="password" autocomplete="new-password"
+                       data-pw-strength="#pwBar" placeholder="Min 8 characters" />
+                <div class="pw-strength"><div class="pw-strength-bar" id="pwBar"></div></div>
+                <span asp-validation-for="Input.Password" class="field-validation-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <input asp-for="Input.ConfirmPassword" type="password" autocomplete="new-password" placeholder="Repeat password" />
+                <span asp-validation-for="Input.ConfirmPassword" class="field-validation-error"></span>
+            </div>
+
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create User</button>
+            <a href="/TenantUsers" class="btn btn-ghost">Cancel</a>
+        </div>
+    </form>
+</div>
